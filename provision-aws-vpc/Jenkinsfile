@@ -6,6 +6,9 @@ pipeline {
             steps {
                 echo 'Cloning...'
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shamimice03/jenkins-hands-on.git']])
+                sh """
+                   ls -la
+                 """
         }}
         stage('Infra provisioning...') {
             steps {
