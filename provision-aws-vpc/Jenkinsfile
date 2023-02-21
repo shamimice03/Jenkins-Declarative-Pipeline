@@ -15,7 +15,7 @@ pipeline {
         stage('Infra provisioning...') {
             steps {
                 sh """
-                    cd provision-aws-vpc
+                    cd provision-aws-vpc/aws-vpc-terraform
                     terraform init
                     terraform plan
                     terraform apply --auto-approve
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Destroying...') {
             steps {
-                sh 'terraform destroy --auto-approve'
+                sh 'cd provision-aws-vpc/aws-vpc-terraform; terraform destroy --auto-approve'
             }
         }
     }
