@@ -29,14 +29,14 @@ pipeline {
       stage('Run multiple commands...') {
          steps {
             sh """
-               cd ~/.ssh
                ls -la 
+               ps -a
             """
          }
       }
       stage('Run multiple commands inline') {
          steps {
-            sh 'cd ~/.ssh; ls -la'
+            sh 'ls -la; ps -a'
          }
       }
 
