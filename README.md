@@ -1,6 +1,6 @@
 # jenkins
 
-## Jenkfkins file template
+## Jenkins file template for `any` agent
 
 ```groovy
 pipeline {
