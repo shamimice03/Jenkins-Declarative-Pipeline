@@ -29,8 +29,8 @@ pipeline {
       stage('Run multiple commands...') {
          steps {
             sh """
-               cd~/.ssh
-               ls - la 
+               cd ~/.ssh
+               ls -la 
             """
          }
       }
