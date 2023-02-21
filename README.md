@@ -6,6 +6,11 @@
 pipeline {
    agent any
 
+   parameters {
+      string(name: 'TV_series', defaultValue: 'breaking bad', description: 'Favourite TV series')
+      string(name: 'Movie', defaultValue: 'pursuit of happiness', description: 'Favourite Movie')
+   }
+
    stages {
       stage('Clone repo') {
          steps {
@@ -28,18 +33,25 @@ pipeline {
       }
       stage('Run multiple commands...') {
          steps {
-            sh ""
-            "
-            cd~/.ssh
-            ls - la ""
-            "
+            sh """
+               ls -la 
+               mkdir -p test
+            """
          }
       }
       stage('Run multiple commands inline') {
          steps {
-            sh 'cd ~/.ssh; ls -la'
+            sh 'ls -la; rm -rf test'
          }
       }
+
+      stage('Run script with parameters') {
+         steps {
+            sh 'chmod +x script/demo-script.sh'
+            sh 'script/demo-script.sh ${TV_series} ${Movie}'
+         }
+      }
+
       stage('Manual permission to proceed') {
          steps {
             input message: 'Click Procced'
