@@ -28,11 +28,10 @@ pipeline {
       }
       stage('Run multiple commands...') {
          steps {
-            sh ""
-            "
-            cd~/.ssh
-            ls - la ""
-            "
+            sh """
+               cd~/.ssh
+               ls - la 
+            """
          }
       }
       stage('Run multiple commands inline') {
