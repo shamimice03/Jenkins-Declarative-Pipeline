@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Terraform repo') {
+            steps {
+                echo 'Cloning...'
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shamimice03/terraform-aws-vpc.git']])
+        }}
+        stage('Infra provisioning...') {
+            steps {
+                sh """
+                    cd terraform-aws-vpc
+                    terraform init
+                    terraform plan
+                    terraform apply --auto-approve
+                """
+                sh 'pwd'
+            }
+        }
+        stage('Procced to destroy the infra ?') {
+            steps {
+                input message: 'Destroy aws resources?'
+            }
+        }
+        stage('Destroying...') {
+            steps {
+                sh 'cd terraform-aws-vpc; terraform destroy --auto-approve'
+            }
+        }
+    }
+}
