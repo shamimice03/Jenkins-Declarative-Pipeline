@@ -30,7 +30,7 @@ pipeline {
          steps {
             sh """
                ls -la 
-               mkdir test
+               mkdir -p test
             """
          }
       }
