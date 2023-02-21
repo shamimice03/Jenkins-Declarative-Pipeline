@@ -8,11 +8,14 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shamimice03/jenkins-hands-on.git']])
                 sh """
                    ls -la
+                   cd provision-aws-vpc
+                   ls -la
                  """
         }}
         stage('Infra provisioning...') {
             steps {
                 sh """
+                    cd provision-aws-vpc
                     terraform init
                     terraform plan
                     terraform apply --auto-approve
