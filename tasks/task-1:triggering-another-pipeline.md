@@ -1,5 +1,5 @@
 Suppose, we have two `pipeline` job. Let's named that `inital-pipeline` and `linked-pipeline`. 
-Following is the way to trigger `linked-pipeline` from `inital-pipeline`
+Following is the way to trigger `linked-pipeline` from `inital-pipeline`.
 
 ### Jenkinsfile for `inital-pipeline`
 ```
