@@ -1,13 +1,12 @@
 pipeline {
     agent any
     options {
-        timeout(time: 1, unit: 'HOURS') 
+        timestamps()
     }
     stages {
         stage ('one') {
             options{
                 retry(3)
-                quietPeriod(30) 
             }
             steps {
                error ('ERROR') 
