@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    environment { 
+      project = 'test-stage'
+      GITHUB_CRED = credentials('github')
+    }
+    stages {
+        stage('one') {
+            environment { 
+               project = 'dev-stage'
+            }
+            steps {
+                sh 'echo ${project}'
+            }
+        }
+        stage('two') {
+            steps {
+                sh 'echo ${project}'
+            }
+        }
+        stage('three') {
+            steps {
+                sh 'echo ${GITHUB_CRED_USR}'
+                sh 'echo ${GITHUB_CRED_PSW}'
+            }
+        }
+    }
+}
