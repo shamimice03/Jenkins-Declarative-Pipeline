@@ -1,0 +1,26 @@
+pipeline {
+    agent {
+        label 'common'
+    }
+    stages{
+        stage('stage1'){
+            stages{
+                stage('Inside Stage 1'){
+                    steps{
+                        echo 'Inside Stage 1'
+                    }
+                }
+            }
+        }
+        stage('stage2'){
+            steps{
+                echo 'stage2'
+            }
+        }
+        stage('stage3'){
+            steps{
+                echo 'stage3'
+            }
+        }
+    }
+}
