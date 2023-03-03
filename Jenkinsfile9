@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    environment{
+        platform = "dev"
+    }
+    stages {
+        stage('if-else') {
+            steps{
+                script{ 
+                    if (env.platform == 'dev') {
+                        echo 'Dev Platform'
+                    }
+                    else{
+                        echo 'Test Platform'
+                    }
+                }
+            }
+            
+        }
+        stage('try-catch') {
+            steps{
+                script{
+                    try{
+                        sh 'abc'
+                    }
+                    catch (exc) {
+                        echo 'Error occured !!!'    
+                    }
+                }
+            }
+        }
+    }
+}
