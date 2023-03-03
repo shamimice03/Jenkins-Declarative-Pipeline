@@ -9,7 +9,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'echo building'
-            
+            }
         }
         stage('Unit tests') {
             steps {
@@ -17,7 +17,6 @@ pipeline {
             }
         }
         stage('Regression tests') {
-            steps {
                 parallel{
                         stage('chrome') {
                             steps {
@@ -35,7 +34,6 @@ pipeline {
                             }
                         }
                 }
-            }
         }
         stage('Release to prod') {
             steps {
@@ -43,9 +41,9 @@ pipeline {
             }
         }
     }
- post {
-        always {
-            echo 'Cleanup!'
-        }
-    }
+     post {
+            always {
+                echo 'Cleanup!'
+            }
+        } 
 }
