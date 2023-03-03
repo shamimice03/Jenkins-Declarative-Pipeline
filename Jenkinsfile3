@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                sh 'echo cloing'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'echo building'
+            
+        }
+        stage('Unit tests') {
+            steps {
+                sh 'echo Running unit tests'
+            }
+        }
+        stage('Regression tests') {
+            steps {
+                parallel{
+                        stage('chrome') {
+                            steps {
+                                sh 'echo Running E2E tests on chrome'
+                            }
+                        }
+                        stage('firefox') {
+                            steps {
+                                sh 'echo Running E2E tests on firefox'
+                            }
+                        }
+                        stage('safari') {
+                            steps {
+                                sh 'echo Running E2E tests on safari'
+                            }
+                        }
+                }
+            }
+        }
+        stage('Release to prod') {
+            steps {
+                sh 'echo Releasing to prod'
+            }
+        }
+    }
+ post {
+        always {
+            echo 'Cleanup!'
+        }
+    }
+}
