@@ -5,7 +5,7 @@ pipeline {
       GITHUB_CRED = credentials('github')
     }
     stages {
-        stage('one') {
+        stage('stage scoped env var') {
             environment { 
                project = 'dev-stage'
             }
@@ -13,15 +13,20 @@ pipeline {
                 sh 'echo ${project}'
             }
         }
-        stage('two') {
+        stage('pipeline scoped env var') {
             steps {
                 sh 'echo ${project}'
             }
         }
-        stage('three') {
+        stage('credentials env var') {
             steps {
                 sh 'echo ${GITHUB_CRED_USR}'
                 sh 'echo ${GITHUB_CRED_PSW}'
+            }
+        }
+        stage('built-in env var') {
+            steps {
+                sh '${BUILD_NUMBER}'
             }
         }
     }
