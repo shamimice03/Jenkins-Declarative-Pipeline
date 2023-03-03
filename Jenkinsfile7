@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    options {
+        timeout(time: 1, unit: 'HOURS') 
+    }
+    stages {
+        stage ('one') {
+            options{
+                retry(3)
+            }
+            steps {
+               error ('ERROR') 
+            }
+        }
+        stage ('two') {
+            steps {
+               echo 'Hello World!'
+            }
+        }
+    }
+}
