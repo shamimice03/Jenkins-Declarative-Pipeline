@@ -1,14 +1,14 @@
-### `Repo` Structure:
+## `Repo` Structure:
 `Jenkinsfile1` points to `01.Jenkinsfile-any-agent.md`
 Similarly, `Jenkinsfile2` points to `02.<name>` and so on.
 
-### Mini-Projects
+## Mini-Projects
 Several `mini-projects` included under `mini-projects` directory.
 
-### Tasks
+## Tasks
 Several tasks included under `tasks` folder.
 
-### Jenkins `Declarative Pipeline` Syntax Manual
+## Jenkins `Declarative Pipeline` Syntax Manual
 | Syntax  | Link    
 | ------------- |:-------------:|
 | Agent |  [Link](https://www.jenkins.io/doc/book/pipeline/syntax/#agent)  
